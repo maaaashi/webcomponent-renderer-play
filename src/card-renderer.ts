@@ -5,12 +5,12 @@ import './todo-card'
 @customElement('card-renderer')
 export class CardRenderer extends LitElement {
   @property({ type: Array })
-  ids = []
+  ids = [1, 2, 3, 4, 5]
 
   render() {
     return html`
       ${this.ids.map(id => html`
-        <todo-card .id=${id}></todo-card>`
+        <todo-card .todoId=${id}></todo-card>`
       )}
     `
   }

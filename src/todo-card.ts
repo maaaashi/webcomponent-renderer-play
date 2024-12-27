@@ -4,12 +4,15 @@ import { customElement, property } from "lit/decorators.js";
 @customElement('todo-card')
 export class TodoCard extends LitElement {
   @property({ type: Number })
-  ids = 0
+  todoId = 0
+
+  @property({ type: String})
+  title = this.todoId.toString()
 
   render() {
     return html`
       <div>
-        ${this.id}
+        ${this.title}
       </div>
     `
   }
