@@ -1,4 +1,4 @@
-import { html, LitElement } from "lit";
+import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 interface TodoResponseJson {
@@ -28,12 +28,19 @@ export class TodoCard extends LitElement {
     }
   }
 
+  static styles = css`
+    .todo-card {
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  `
 
   render() {
     return html`
-      <div>
-        ${this.todo}
+      <div class="todo-card">
         <input type="checkbox" .checked=${this.completed} />
+        ${this.todo}
       </div>
     `
   }
