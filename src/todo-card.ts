@@ -1,12 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-
-interface TodoResponseJson {
-  id: number,
-  todo: string,
-  completed: boolean,
-  userId: number
-}
+import { TodoResponseJson } from "./types";
 
 @customElement('todo-card')
 export class TodoCard extends LitElement {
