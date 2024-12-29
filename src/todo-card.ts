@@ -33,13 +33,13 @@ export class TodoCard extends LitElement {
       border: 1px solid;
       border-radius: 5px;
       padding: 10px;
+      width: 200px;
     }
   `
 
   render() {
     return html`
       <div class="todo-card">
-        <input type="checkbox" .checked=${this.completed} />
         ${this.todo}
       </div>
     `
