@@ -19,6 +19,7 @@ export class TodoList extends LitElement {
       const json = await response.json() as TodoResponseJson
 
       this.todo = json.todo
+      this.completed = json.completed
     }
   }
 

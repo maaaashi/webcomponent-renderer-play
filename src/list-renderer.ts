@@ -1,11 +1,21 @@
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import './todo-list'
+import { fetchTodoIds } from "./todos";
 
 @customElement('list-renderer')
 export class ListRenderer extends LitElement {
   @property({ type: Array })
-  ids = [1, 2, 3, 4, 5]
+  ids = [] as number[]
+
+  constructor() {
+    super()
+
+    fetchTodoIds()
+      .then(todos => {
+        this.ids = [...todos.wipIds, ...todos.completedIds]
+      })
+  }
 
   render() {
     return html`
