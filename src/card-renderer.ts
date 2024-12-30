@@ -1,11 +1,12 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import './todo-card'
+import { TodoResponseJson } from "./types";
 
 @customElement('card-renderer')
 export class CardRenderer extends LitElement {
   @property({ type: Array })
-  ids = [1, 2, 3, 4, 5]
+  ids = [] as number[]
 
   static styles = css`
     .todo-cards {
@@ -20,9 +21,23 @@ export class CardRenderer extends LitElement {
     }
   `
 
+  async fetchTodos() {
+    const res = await fetch('https://dummyjson.com/todos/random/5')
+    const json = await res.json() as TodoResponseJson[]
+    json.map(todo => {
+      this.ids.push(todo.id)
+    })
+  }
+
+  constructor() {
+    super()
+
+  }
+
   render() {
     return html`
       <div class="todos">
+        ${this.ids}
         <section>
           <h4>
             WIP
