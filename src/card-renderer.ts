@@ -1,12 +1,15 @@
 import { css, html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import './todo-card'
 import { TodoResponseJson } from "./types";
 
 @customElement('card-renderer')
 export class CardRenderer extends LitElement {
   @property({ type: Array })
-  ids = [] as number[]
+  wipIds = [] as number[]
+
+  @property({ type: Array })
+  completedIds = [] as number[]
 
   static styles = css`
     .todo-cards {
@@ -25,25 +28,29 @@ export class CardRenderer extends LitElement {
     const res = await fetch('https://dummyjson.com/todos/random/5')
     const json = await res.json() as TodoResponseJson[]
     json.map(todo => {
-      this.ids.push(todo.id)
+      if (todo.completed) {
+        this.completedIds = [...this.completedIds, todo.id]
+      } else {
+        this.wipIds = [...this.wipIds, todo.id]
+      }
     })
   }
 
   constructor() {
     super()
 
+    this.fetchTodos()
   }
 
   render() {
     return html`
       <div class="todos">
-        ${this.ids}
         <section>
           <h4>
             WIP
           </h4>
           <div class="todo-cards">
-            ${this.ids.filter(id => id % 2 == 0).map(id => html`
+            ${this.wipIds.map(id => html`
               <todo-card .todoId=${id}></todo-card>`
             )}
           </div>
@@ -53,7 +60,7 @@ export class CardRenderer extends LitElement {
             COMPLETED
           </h4>
           <div class="todo-cards">
-            ${this.ids.filter(id => id % 2 != 0).map(id => html`
+            ${this.completedIds.map(id => html`
               <todo-card .todoId=${id}></todo-card>`
             )}
           </div>

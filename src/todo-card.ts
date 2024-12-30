@@ -34,6 +34,7 @@ export class TodoCard extends LitElement {
   render() {
     return html`
       <div class="todo-card">
+        ${this.todoId}: 
         ${this.todo}
       </div>
     `
