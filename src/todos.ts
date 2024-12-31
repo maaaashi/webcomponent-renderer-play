@@ -6,6 +6,12 @@ export const fetchTodoIds = async () => {
   }
 }
 
+export const fetchTeamTodoIds = async () => {
+  return {
+    ids: [1,2,3,4,5,6,7,8,9,10],
+  }
+}
+
 export const groupTodosByStatus = async (ids: number[]) => {
   const results = await Promise.all(
     ids.map(async (id) => {

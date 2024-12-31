@@ -1,6 +1,7 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import './my-todos'
+import './team-todos'
 import './card-renderer'
 import './list-renderer'
 
@@ -30,6 +31,7 @@ export class MyElement extends LitElement {
         <my-todos @todo-fetched=${this.handleTodoFetched}>
           <card-renderer .ids=${this.ids}></card-renderer>
         </my-todos>
+
         list タイプ
         <pre>
           ${`<my-todos>
@@ -38,6 +40,15 @@ export class MyElement extends LitElement {
         <my-todos @todo-fetched=${this.handleTodoFetched}>
           <list-renderer .ids=${this.ids}></list-renderer>
         </my-todos>
+
+        teamのTodo
+        <pre>
+          ${`<team-todos>
+            <list-renderer ids=[]></list-renderer>
+          </team-todos>`}</pre>
+        <team-todos @todo-fetched=${this.handleTodoFetched}>
+          <list-renderer .ids=${this.ids}></list-renderer>
+        </team-todos>
       </div>
     `
   }

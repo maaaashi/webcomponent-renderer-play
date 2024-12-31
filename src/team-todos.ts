@@ -1,16 +1,16 @@
 import { html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import { fetchTodoIds } from './todos'
+import { fetchTeamTodoIds } from './todos'
 
-@customElement('my-todos')
-export class MyTodos extends LitElement {
+@customElement('team-todos')
+export class TeamTodos extends LitElement {
   @property({ type: Array })
   ids = []
 
   constructor() {
     super()
 
-    fetchTodoIds().then((data) => {
+    fetchTeamTodoIds().then((data) => {
       const event = new CustomEvent('todo-fetched', {
         detail: {
           ids: data.ids,
