@@ -1,5 +1,5 @@
 import { LitElement, css, html } from 'lit'
-import { customElement } from 'lit/decorators.js'
+import { customElement, property } from 'lit/decorators.js'
 import './my-todos'
 import './card-renderer'
 import './list-renderer'
@@ -12,16 +12,23 @@ import './list-renderer'
  */
 @customElement('my-app')
 export class MyElement extends LitElement {
+  @property({ type: Array })
+  ids = []
+
+  handleTodoFetched(event: CustomEvent) {
+    this.ids = event.detail.ids
+  }
+
   render() {
     return html`
       <div>
         card タイプ
-        <my-todos>
-          <card-renderer></card-renderer>
+        <my-todos @todo-fetched=${this.handleTodoFetched}>
+          <card-renderer .ids=${this.ids}></card-renderer>
         </my-todos>
         list タイプ
-        <my-todos>
-          <list-renderer></list-renderer>
+        <my-todos @todo-fetched=${this.handleTodoFetched}>
+          <list-renderer .ids=${this.ids}></list-renderer>
         </my-todos>
       </div>
     `

@@ -9,7 +9,7 @@ export class TodoList extends LitElement {
 
   @property({ type: String })
   todo = ""
-  
+
   @property({ type: Boolean })
   completed = false
 

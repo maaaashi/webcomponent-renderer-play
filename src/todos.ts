@@ -1,17 +1,24 @@
 import { TodoResponseJson } from "./types"
 
 export const fetchTodoIds = async () => {
-    const res = await fetch('https://dummyjson.com/todos/random/5')
-    const json = await res.json() as TodoResponseJson[]
-    let completedIds = [] as number[]
-    let wipIds = [] as number[]
-    json.map(todo => {
-      if (todo.completed) {
-        completedIds = [...completedIds, todo.id]
-      } else {
-        wipIds = [...wipIds, todo.id]
-      }
-    })
+  return {
+    ids: [61, 97, 195, 109, 35]
+  }
+}
 
-    return { completedIds, wipIds }
+export const groupTodosByStatus = async (ids: number[]) => {
+  const results = await Promise.all(ids.map(async id => {
+    const res = await fetch(`https://dummyjson.com/todos/${id}`)
+    const json = await res.json() as TodoResponseJson
+
+    return json
+  }))
+
+  const wipIds = results.filter(todo => !todo.completed).map(todo => todo.id)
+  const completedIds = results.filter(todo => todo.completed).map(todo => todo.id)
+
+  return {
+    wipIds,
+    completedIds
+  }
 }

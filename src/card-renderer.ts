@@ -1,10 +1,14 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import './todo-card'
-import { fetchTodoIds } from "./todos";
+import { TodoResponseJson } from "./types";
+import { groupTodosByStatus } from "./todos";
 
 @customElement('card-renderer')
 export class CardRenderer extends LitElement {
+  @property({ type: Array })
+  ids = []
+
   @property({ type: Array })
   wipIds = [] as number[]
 
@@ -24,14 +28,17 @@ export class CardRenderer extends LitElement {
     }
   `
 
-  constructor() {
-    super()
+  async updated(changedProperties: { has: (arg: string) => any; }) {
+    if (changedProperties.has('ids')) {
+      this.wipIds = []
+      this.completedIds = []
 
-    fetchTodoIds()
-      .then(todos => {
-        this.wipIds = todos.wipIds
-        this.completedIds = todos.completedIds
-      })
+      groupTodosByStatus(this.ids)
+        .then(data => {
+          this.wipIds = data.wipIds
+          this.completedIds = data.completedIds
+        })
+    }
   }
 
   render() {
