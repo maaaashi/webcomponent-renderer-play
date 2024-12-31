@@ -23,10 +23,18 @@ export class MyElement extends LitElement {
     return html`
       <div>
         card タイプ
+        <pre>
+          ${`<my-todos>
+            <card-renderer ids=[]></card-renderer>
+          </my-todos>`}</pre>
         <my-todos @todo-fetched=${this.handleTodoFetched}>
           <card-renderer .ids=${this.ids}></card-renderer>
         </my-todos>
         list タイプ
+        <pre>
+          ${`<my-todos>
+            <list-renderer ids=[]></list-renderer>
+          </my-todos>`}</pre>
         <my-todos @todo-fetched=${this.handleTodoFetched}>
           <list-renderer .ids=${this.ids}></list-renderer>
         </my-todos>
@@ -34,11 +42,10 @@ export class MyElement extends LitElement {
     `
   }
 
-  static styles = css``
+  static styles = css`
+  pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+  }
+  `
 }
-
-// declare global {
-//   interface HTMLElementTagNameMap {
-//     'my-element': MyElement
-//   }
-// }
