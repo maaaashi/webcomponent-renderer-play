@@ -1,6 +1,6 @@
-import { html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { fetchTodoIds } from "./todos";
+import { html, LitElement } from 'lit'
+import { customElement, property } from 'lit/decorators.js'
+import { fetchTodoIds } from './todos'
 
 @customElement('my-todos')
 export class MyTodos extends LitElement {
@@ -10,17 +10,15 @@ export class MyTodos extends LitElement {
   constructor() {
     super()
 
-    fetchTodoIds()
-      .then(data => {
-        const event = new CustomEvent('todo-fetched', {
-          detail: {
-            ids: data.ids
-          }
-        })
-
-        this.dispatchEvent(event)
+    fetchTodoIds().then((data) => {
+      const event = new CustomEvent('todo-fetched', {
+        detail: {
+          ids: data.ids,
+        },
       })
 
+      this.dispatchEvent(event)
+    })
   }
 
   render() {
@@ -28,6 +26,6 @@ export class MyTodos extends LitElement {
       <div>
         <slot .ids=${this.ids}></slot>
       </div>
-    `;
+    `
   }
 }

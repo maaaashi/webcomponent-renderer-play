@@ -34,8 +34,7 @@ export class MyElement extends LitElement {
     `
   }
 
-  static styles = css`
-  `
+  static styles = css``
 }
 
 // declare global {
