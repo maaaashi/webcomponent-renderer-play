@@ -2,13 +2,13 @@ import { TodoResponseJson } from './types'
 
 export const fetchTodoIds = async () => {
   return {
-    ids: [61, 97, 195, 109, 35],
+    ids: [4, 97, 195, 80, 35],
   }
 }
 
 export const fetchTeamTodoIds = async () => {
   return {
-    ids: [1,2,3,4,5,6,7,8,9,10],
+    ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   }
 }
 
