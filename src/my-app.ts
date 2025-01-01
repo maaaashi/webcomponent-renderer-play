@@ -32,8 +32,8 @@ export class MyElement extends LitElement {
       <div>
         <h2>カードタイプ</h2>
         <pre>
-          ${`<my-todos>
-            <card-renderer ids=[]></card-renderer>
+          ${`<my-todos @todo-fetched=$\{this.handleTodoFetched\}>
+            <card-renderer .ids=$\{this.ids\}></card-renderer>
           </my-todos>`}</pre
         >
         <my-todos @todo-fetched=${this.handleTodoFetched}>
@@ -42,8 +42,8 @@ export class MyElement extends LitElement {
 
         <h2>リストタイプ</h2>
         <pre>
-          ${`<my-todos>
-            <list-renderer ids=[]></list-renderer>
+          ${`<my-todos @todo-fetched=$\{this.handleTodoFetched\}>
+            <list-renderer .ids=$\{this.ids\}></list-renderer>
           </my-todos>`}</pre
         >
         <my-todos @todo-fetched=${this.handleTodoFetched}>
@@ -52,8 +52,8 @@ export class MyElement extends LitElement {
 
         <h2>チームのTodo</h2>
         <pre>
-          ${`<team-todos>
-            <list-renderer ids=[]></list-renderer>
+          ${`<team-todos @todo-fetched=$\{this.handleTeamTodoFetched\}>
+            <list-renderer .ids=$\{this.ids\}></list-renderer>
           </team-todos>`}</pre
         >
         <team-todos @todo-fetched=${this.handleTeamTodoFetched}>
