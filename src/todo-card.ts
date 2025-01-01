@@ -27,16 +27,16 @@ export class TodoCard extends LitElement {
       this.todo = json.todo
 
       if (this.todoId === 4 || this.todoId === 97) {
-        this._imageSrc = '../public/watch.png'
+        this._imageSrc = '/watch.png'
         this._imageAlt = 'watch'
       } else if (this.todoId === 80) {
-        this._imageSrc = '../public/bake.png'
+        this._imageSrc = '/bake.png'
         this._imageAlt = 'bake'
       } else if (this.todoId === 195) {
-        this._imageSrc = '../public/visit.png'
+        this._imageSrc = '/visit.png'
         this._imageAlt = 'visit'
       } else {
-        this._imageSrc = '../public/phone.png'
+        this._imageSrc = '/phone.png'
         this._imageAlt = 'phone'
       }
     }
