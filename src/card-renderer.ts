@@ -25,6 +25,12 @@ export class CardRenderer extends LitElement {
       display: flex;
       gap: 20px;
     }
+
+    .todo-status {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   `
 
   async updated(changedProperties: { has: (arg: string) => any }) {
@@ -42,7 +48,7 @@ export class CardRenderer extends LitElement {
   render() {
     return html`
       <div class="todos">
-        <section>
+        <section class="todo-status">
           <h4>WIP</h4>
           <div class="todo-cards">
             ${this.wipIds.map(
@@ -50,7 +56,7 @@ export class CardRenderer extends LitElement {
             )}
           </div>
         </section>
-        <section>
+        <section class="todo-status">
           <h4>COMPLETED</h4>
           <div class="todo-cards">
             ${this.completedIds.map(
