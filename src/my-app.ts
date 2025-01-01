@@ -30,7 +30,7 @@ export class MyElement extends LitElement {
   render() {
     return html`
       <div>
-        card タイプ
+        <h2>カードタイプ</h2>
         <pre>
           ${`<my-todos>
             <card-renderer ids=[]></card-renderer>
@@ -40,7 +40,7 @@ export class MyElement extends LitElement {
           <card-renderer .ids=${this.ids}></card-renderer>
         </my-todos>
 
-        list タイプ
+        <h2>リストタイプ</h2>
         <pre>
           ${`<my-todos>
             <list-renderer ids=[]></list-renderer>
@@ -50,7 +50,7 @@ export class MyElement extends LitElement {
           <list-renderer .ids=${this.ids}></list-renderer>
         </my-todos>
 
-        teamのTodo
+        <h2>チームのTodo</h2>
         <pre>
           ${`<team-todos>
             <list-renderer ids=[]></list-renderer>
