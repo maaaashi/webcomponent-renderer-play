@@ -3,6 +3,10 @@
 このプロジェクトでは、Web Componentsの再利用性を高める方法を示しています。具体的には、`slot`とカスタムイベントを使って、柔軟で拡張可能なコンポーネント設計を実現します。
 元々のユースケースに対して、カードスタイルやチームのTodoなど、さまざまなバリエーションを簡単に切り替えることができます。
 
+こちらのリポジトリはQiitaに投稿した記事の内容を実装したものです
+
+[再利用性を高めたWeb Components](https://qiita.com/maaaashi/items/3376cdd0b6ee75c634eb)
+
 ## 目次
 
 - [Web Components Renderer Sample](#web-components-renderer-sample)
