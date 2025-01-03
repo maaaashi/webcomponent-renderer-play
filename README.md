@@ -41,13 +41,13 @@
 1. プロジェクトをクローンします
 
    ```bash
-   git clone https://github.com/maaaashi/webcomponent-renderer-play.git
+   git clone https://github.com/maaaashi/webcomponent-renderer-sample.git
    ```
 
 2. 必要な依存関係をインストールします
 
    ```bash
-   cd webcomponent-renderer-play
+   cd webcomponent-renderer-sample
    npm install
    ```
 
